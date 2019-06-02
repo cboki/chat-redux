@@ -4,7 +4,7 @@ import MessageList from '../containers/message_list';
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app messaging-wrapper">
       <MessageList />
     </div>
   );
