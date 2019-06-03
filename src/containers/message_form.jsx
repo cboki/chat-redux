@@ -24,6 +24,10 @@ class MessageForm extends Component {
     this.setState({ value: '' });
   }
 
+  componentDidMount = () => {
+    this.messageBox.focus();
+  }
+
   render () {
     return(
       <div>
@@ -33,6 +37,7 @@ class MessageForm extends Component {
           value={this.state.value}
           onChange={this.handleChange}
           className='form-control'
+          ref={(input) => {this.messageBox = input; }}
           />
           <button type="submit">Envoyer</button>
         </form>
