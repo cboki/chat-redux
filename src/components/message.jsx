@@ -3,7 +3,9 @@ import React from 'react';
 const Message = (props) => {
   return (
     <div className='message-container'>
-      <h4>{props.message.author}</h4>
+      <i className='author'>
+        <span>{props.message.author}</span>
+      </i>
       <p>{props.message.content}</p>
     </div>
   )

@@ -27,9 +27,14 @@ class MessageForm extends Component {
   render () {
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
+        <form onSubmit={this.handleSubmit} className='channel-editor'>
+          <input
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+          className='form-control'
+          />
+          <button type="submit">Envoyer</button>
         </form>
       </div>
     )
