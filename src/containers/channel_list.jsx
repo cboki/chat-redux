@@ -2,14 +2,26 @@ import React, { Component } from 'react';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { selectChannel, fetchMessages } from '../actions';
 
 class ChannelList extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedChannel !== this.props.selectedChannel) {
+      this.props.fetchMessages(nextProps.selectedChannel);
+    }
+  }
+
+  handleClick = (event) => {
+    this.props.selectChannel(event.target.lastChild.data);
+  }
 
   renderChannel = (channel) => {
     return(
       <li
+      onClick={this.handleClick}
       key={channel}
       className={channel === this.props.selectedChannel ? 'active' : null}
+      role="presentation"
       >
         #{channel}
       </li>
@@ -34,11 +46,13 @@ function mapStateToProps(state) {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(
-//     { createMessage: createMessage },
-//     dispatch
-//     );
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { selectChannel: selectChannel,
+      fetchMessages: fetchMessages
+     },
+    dispatch
+    );
+}
 
-export default connect(mapStateToProps)(ChannelList);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);

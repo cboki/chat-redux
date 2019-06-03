@@ -9,7 +9,7 @@ import MessageForm from '../containers/message_form';
 
 class MessageList extends Component {
   fetchMessages = () => {
-    this.props.fetchMessages(this.props.channel);
+    this.props.fetchMessages(this.props.selectedChannel);
   }
 
   componentWillMount = () => {
@@ -32,7 +32,7 @@ class MessageList extends Component {
     return (
       <div className='channel-container'>
         <div className="channel-title">
-          <span>Channel #{this.props.channel}</span>
+          <span>Channel #{this.props.selectedChannel}</span>
         </div>
         <div className="channel-content" ref={(list) => { this.list = list; }}>
           {this.props.messages.map((message) => <Message message={message} key={message.id} />)}
@@ -46,7 +46,7 @@ class MessageList extends Component {
 function mapStateToProps(state) {
   return {
     messages: state.messages,
-    channel: state.selectedChannel
+    selectedChannel: state.selectedChannel
   }
 }
 
