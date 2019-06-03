@@ -32,7 +32,7 @@ const initialState = {
   ],
   channels: [ 'general' , 'redux' , 'paris' ],
   selectedChannel: 'general',
-  currentUsername: 'toto'  // || prompt('What is your username?')
+  currentUsername: prompt('Quel est votre pseudo ?') || 'toto'
 };
 
 const reducers = combineReducers({
